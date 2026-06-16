@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+
+        <!-- heading -->
+        <div class="header">
+            <h1><i class="fa-solid fa-graduation-cap"></i> StudyFlow</h1>
+            <p class="subtitle">Transform chaos into clarity. Master your studies with a curated planning</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="tabs">
+            <button class="navtab active" onclick="switchTab('planner', event)">
+                <i class="fa-solid fa-calendar-plus"></i> Planner
+            </button>
+
+            <button class="navtab" onclick="switchTab('schedule', event)">
+                <i class="fa-solid fa-clock"></i> Schedule
+            </button>
+
+            <button class="navtab" onclick="switchTab('analytics', event)">
+                <i class="fa-solid fa-chart-line"></i> Analytics
+            </button>
+        </div>
+
+        <!-- planner tab -->
+        <div id="planner" class="panel active">
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px;">
+                <div class="input">
+                    <input type="text" class="field" id="subjectName" placeholder=" " required>
+                    <label><i class="fas fa-book"></i> Subject Name</label>
+                </div>
+
+                <div class="input">
+                    <input type="date" class="field" id="examDate" placeholder=" " required>
+                    <label><i class="fas fa-calendar-alt"></i> Exam Date</label>
+                </div>
+            </div>
+
+            <div class="input" style="max-width: 300px; margin: 0 auto 30px;">
+                <input type="number" class="field" id="totalHours" placeholder=" " min="1" required>
+                <label><i class="fas fa-clock"></i> Total Hours Needed</label>
+            </div>
+
+            <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <button class="primary" onclick="addSubject()">
+                    <i class="fas fa-plus"></i> Add Subject
+                </button>
+                <button class="secondary" onclick="clearForm()">
+                    <i class="fas fa-trash"></i> Clear
+                </button>
+            </div>
+
+            <div id="subjectsContainer" class="subjects-grid"></div>
+  
+        </div>
+
+        <!-- Schedule Tab -->
+        <div class="panel" id="schedule">
+
+            <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 2rem;">
+                <i class="fas fa-table"></i> Smart Study Schedule
+            </h2>
+
+            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 30px; flex-wrap: wrap;">
+                <button class="primary" onclick="generateSchedule()">
+                    <i class="fas fa-magic"></i> Generate Schedule
+                </button>
+
+                <button class="secondary" onclick="resetSchedule()">
+                    <i class="fas fa-redo"></i> Reset
+                </button>
+            </div>
+
+            <div class="timetable-container">
+
+                <table id="scheduleTable" class="timetable" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th><i claas="fas fa-book"></i> Subject </th>
+                            <th><i class="fas fa-stopwatch"></i> Duration </th>
+                            <th><i class="fas fa-coffee"></i> Break </th>
+                        </tr>
+                    </thead>
+                    <tbody id="scheduleBody"></tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="analytics" class="panel">
+            <h2 style="color: white; text-align: center; margin-bottom: 30px; font-size: 2rem;">
+                <i class="fas fa-chart-bar"></i> Study Analytics
+            </h2>
+
+            <div class="stats-grid" id="statsGrid"></div>
+
+            <div id="progressGrid" class="subjects-grid"></div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>
